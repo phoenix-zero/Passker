@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QDialog widget;
     QVBoxLayout layout(&widget);
     QHBoxLayout passField(&widget);
-    QLabel label("Enter your password\nBut remember, this app is not secure",&widget);
+    QLabel label(((argc<2)?"Called for more-or-less nothing":argv[1]),&widget);
     QLineEdit input(&widget);
     QPushButton button("Submit",&widget), showPass(&widget);
     input.setEchoMode(QLineEdit::EchoMode::Password);
