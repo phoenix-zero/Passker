@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="vis">visible.png</file>
+        <file alias="inv">invisible.png</file>
+    </qresource>
+</RCC>

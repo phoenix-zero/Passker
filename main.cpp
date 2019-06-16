@@ -17,17 +17,23 @@ int main(int argc, char *argv[])
     QLineEdit input(&widget);
     QPushButton button("Submit",&widget), showPass(&widget);
     input.setEchoMode(QLineEdit::EchoMode::Password);
-    showPass.setFlat(true);
+    showPass.setIcon(QIcon(":/inv"));
     QObject::connect(&button,&QPushButton::clicked,&input,[&input](){
         std::cout << input.text().toStdString() << std::endl;
         exit(0);
     });
     QObject::connect(&input,&QLineEdit::returnPressed,&button,&QPushButton::click);
-    QObject::connect(&showPass,&QPushButton::clicked,&input,[&input](){
+    QObject::connect(&showPass,&QPushButton::clicked,&input,[&input,&showPass](){
         if(input.echoMode() == QLineEdit::EchoMode::Password)
+        {
             input.setEchoMode(QLineEdit::EchoMode::Normal);
+            showPass.setIcon(QIcon(":/vis"));
+        }
         else
+        {
             input.setEchoMode(QLineEdit::EchoMode::Password);
+            showPass.setIcon(QIcon(":/inv"));
+        }
     });
     layout.addWidget(&label);
     passField.addWidget(&input);
