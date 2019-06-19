@@ -12,10 +12,10 @@ int main(int argc, char *argv[])
 
     QDialog widget;
     QVBoxLayout layout(&widget);
-    QHBoxLayout passField(&widget);
-    QLabel label(((argc<2)?"Called for more-or-less nothing":argv[1]),&widget);
-    QLineEdit input(&widget);
-    QPushButton button("Submit",&widget), showPass(&widget);
+    QHBoxLayout passField;
+    QLabel label(((argc<2)?"Called for more-or-less nothing":argv[1]));
+    QLineEdit input;
+    QPushButton button("Submit"), showPass;
     input.setEchoMode(QLineEdit::EchoMode::Password);
     showPass.setIcon(QIcon(":/inv"));
     QObject::connect(&button,&QPushButton::clicked,&input,[&input](){
@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
     passField.addWidget(&showPass);
     layout.addLayout(&passField);
     layout.addWidget(&button);
-    widget.setLayout(&layout);
     widget.show();
 
     return a.exec();
